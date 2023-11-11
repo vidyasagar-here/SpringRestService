@@ -58,4 +58,9 @@ public class MyController {
         return new ResponseEntity<String>(error, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
+    @GetMapping("ping")
+    public String getResponse() {
+        return "Pong";
+    }
+
 }
