@@ -3,6 +3,8 @@ package com.app.controller;
 
 import com.app.model.Book;
 import com.app.service.IBookStoreService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,16 +17,15 @@ import java.util.List;
 @RequestMapping("/bookservice")
 public class MyController {
 
-
+    Logger logger = LoggerFactory.getLogger(MyController.class);
     @Autowired
     private IBookStoreService service;
 
     @GetMapping("books")
     public ResponseEntity<List<Book>> getBooks() {
-
+        logger.info("getBooks");
         List<Book> books = service.getBooks();
         return new ResponseEntity<List<Book>>(books, HttpStatus.OK);
-
     }
 
     @GetMapping("books/{id}")
